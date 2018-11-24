@@ -2,6 +2,7 @@
 {-# LANGUAGE TemplateHaskell #-}
 module Scylla.Types.API (
     Response(..)
+  , Query(..)
   , queryLastBuilds
   , queryBuild
   , queryRestart
@@ -42,8 +43,8 @@ $(deriveJSON scyllaOptions ''Query)
 queryLastBuilds :: Query
 queryLastBuilds = Query LastBuilds Nothing
 
-queryBuild :: Integer -> String -> Query
-queryBuild bId proj = Query Build $ Just $ M.fromList [("id", show bId), ("projectName", proj)]
+queryBuild :: Integer -> Query
+queryBuild bId = Query Build $ Just $ M.fromList [("id", show bId)]
 
 queryRestart :: Integer -> Query
 queryRestart bId = Query Restart $ Just $ M.fromList [("id", show bId)]
