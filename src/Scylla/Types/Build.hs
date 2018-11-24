@@ -7,10 +7,11 @@ import Data.Time.LocalTime
 
 import Scylla.Types.Utils
 import Scylla.Types.Log (Log)
+import Scylla.Types.BuildStatus (BuildStatus)
 
 data Build = Build {
     id          :: Integer
-  , status      :: String
+  , status      :: BuildStatus
   , createdAt   :: ZonedTime
   , updatedAt   :: ZonedTime
   , statusAt    :: ZonedTime

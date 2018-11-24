@@ -18,6 +18,7 @@ library
   exposed-modules:     Scylla.Types
                      , Scylla.Types.API
                      , Scylla.Types.Build
+                     , Scylla.Types.BuildStatus
                      , Scylla.Types.Log
                      , Scylla.Types.ShortLog
                      , Scylla.Types.Org
