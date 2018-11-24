@@ -48,3 +48,4 @@ updateState (A.RBuilds bs)    = \x -> x { lastBuilds = bs }
 updateState (A.ROrgs os)      = \x -> x { organizations = os }
 updateState (A.ROrgBuilds bs) = \x -> x { organizationBuilds = bs }
 updateState (A.RBuildLog bl)  = \x -> x { buildLines = (buildLines x) ++ [bl] }
+updateState (A.RRestart)      = id

@@ -61,6 +61,7 @@ data Response =
   | RBuildLog S.ShortLog
   | ROrgs [O.Org]
   | ROrgBuilds [B.Build]
+  | RRestart
   deriving (Show)
 
 instance FromJSON Response where
@@ -88,5 +89,8 @@ instance FromJSON Response where
       "organizationBuilds" -> do
         ob <- respData .: "organizationBuilds"
         ROrgBuilds <$> parseJSON ob
+
+      "restart" -> do
+        return $ RRestart
 
       _            -> fail $ "Unknown mutation: " ++ mutation
