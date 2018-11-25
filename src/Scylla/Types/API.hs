@@ -8,6 +8,8 @@ module Scylla.Types.API (
   , queryRestart
   , queryOrganizations
   , queryOrganizationBuilds
+  , queryWatch
+  , queryUnwatch
   )
   where
 
@@ -54,6 +56,12 @@ queryOrganizations = Query Organizations Nothing
 
 queryOrganizationBuilds :: String -> Query
 queryOrganizationBuilds orgName = Query OrganizationBuilds $ Just $ M.fromList [("orgName", orgName)]
+
+queryWatch :: Integer -> Query
+queryWatch bId = Query BuildLogWatch $ Just $ M.fromList [("id", show bId)]
+
+queryUnwatch :: Query
+queryUnwatch = Query BuildLogUnwatch Nothing
 
 data Response =
     RBuild B.Build
